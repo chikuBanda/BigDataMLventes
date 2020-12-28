@@ -1,4 +1,4 @@
-package com.chiku.hadoop;
+package org.mbds.hadoop.ventes;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

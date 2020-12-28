@@ -1,16 +1,19 @@
-package com.chiku.hadoop;
+package org.mbds.hadoop.ventes;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.io.IntWritable;
 
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import org.apache.hadoop.mapreduce.Mapper;
+import java.io.IOException;
 
-public class CountryMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
+public class RegionMapper extends Mapper<LongWritable, Text, Text, DoubleWritable>{
     protected void map(LongWritable key, Text value, Context context)
-            throws IOException, InterruptedException{
+        throws IOException, InterruptedException{
 
         try {
             if (key.get() == 0 && value.toString().contains("Region"))
@@ -20,9 +23,9 @@ public class CountryMapper extends Mapper<LongWritable, Text, Text, DoubleWritab
 
                 for(int i = 0; i < data.length; i++){
                     String[] columns = (data[i]).split(",");
-                    Text country = new Text(columns[1]);
+                    Text region = new Text(columns[0]);
                     Double profit = Double.parseDouble(columns[13]);
-                    context.write(country, new DoubleWritable(profit));
+                    context.write(region, new DoubleWritable(profit));
                 }
             }
         } catch (Exception e) {

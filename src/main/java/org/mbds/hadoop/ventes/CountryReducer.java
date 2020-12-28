@@ -1,4 +1,4 @@
-package com.chiku.hadoop;
+package org.mbds.hadoop.ventes;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;

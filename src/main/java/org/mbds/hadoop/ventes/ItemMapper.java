@@ -1,12 +1,10 @@
-package com.chiku.hadoop;
+package org.mbds.hadoop.ventes;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 public class ItemMapper extends Mapper<LongWritable, Text, Text, CustomDoubleWritable> {
     protected void map(LongWritable key, Text value, Context context)
